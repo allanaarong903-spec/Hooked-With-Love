@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hooked with Love | Handmade with Heart</title>
+<meta name="description" content="Hooked with Love — handmade crochet creations and customizable gifts.">
+<meta name="theme-color" content="#fff9f2">
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.11.1/core.css">
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="https://pyscript.net/releases/2024.11.1/core.js"></script>
+</head>
+<body>
+<div class="topbar">
+<header class="wrap">
+<a class="brand" href="home.html">
+<img
+    class="brand-logo"
+    src="IMAGES/hookedwithlove_logo.png"
+    alt="Hooked with Love — Handmade logo"
+>
+<span>
+<strong>Hooked with Love</strong>
+<small>Handmade crochet &amp; crafts</small>
+</span>
+</a>
+<nav aria-label="Main navigation">
+<a href="home.html">Home</a>
+<a href="about.html">About Us</a>
+<a href="shop.html" class="active">Shop</a>
+<a href="contact.html">Contact Us &amp; FAQ</a>
+<a href="reviews.html">Reviews</a>
+</nav>
+<div class="header-actions">
+<div class="header-auth-control" id="authHeaderControl"></div>
+<a aria-label="Customer profile" class="icon-btn" href="index.html#profile">♙</a>
+<a aria-label="Shopping cart" class="icon-btn" href="index.html#cart">
+            ♡<span class="count" id="cartCount">0</span>
+</a>
+</div>
+</header>
+</div>
+<main class="wrap">
+<section class="page active" id="shop">
+<button class="back" data-onclick="showPage('home')">‹</button>
+<div class="page-title">
+<div class="eyebrow">Find your favorite</div>
+<h2>Find Something Handmade with Love.</h2>
+<p>Browse our collection of cute crochet crafts and thoughtful gifts.</p>
+</div>
+<div class="toolbar">
+<input class="search" data-oninput="renderProducts()" id="searchInput" placeholder="Search for a product…"/>
+<select class="search" data-onchange="renderProducts()" id="sortSelect" style="max-width:220px;min-width:180px">
+<option value="featured">Sort: Featured</option>
+<option value="low">Price: Low to High</option>
+<option value="high">Price: High to Low</option>
+<option value="name">Name: A to Z</option>
+</select>
+</div>
+<div class="filters" id="filters"></div>
+<div class="grid" id="shopGrid"></div>
+<div class="empty hidden" id="noResults">
+<div class="empty-icon">🔎</div><h3>No products found</h3>
+<p>Try another search or choose a different category.</p>
+<button class="btn btn-secondary" data-onclick="resetShop()">Clear Search</button>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap footer-row">
+<a class="brand" href="home.html">
+<img
+    class="brand-logo"
+    src="IMAGES/hookedwithlove_logo.png"
+    alt="Hooked with Love — Handmade logo"
+>
+<span><strong>Hooked with Love</strong><small>Handmade crochet &amp; crafts</small></span>
+</a>
+<span class="subtle">Made with ♡ · Girlies Five</span>
+</div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="py" src="./app.py" config="./pyscript.toml"></script>
+</body>
+</html>
