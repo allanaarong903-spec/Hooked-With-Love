@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hooked with Love | Handmade with Heart</title>
+<meta name="description" content="Hooked with Love — handmade crochet creations and customizable gifts.">
+<meta name="theme-color" content="#fff9f2">
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.11.1/core.css">
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="https://pyscript.net/releases/2024.11.1/core.js"></script>
+</head>
+<body>
+<div class="topbar">
+<header class="wrap">
+<a class="brand" href="home.html">
+<img
+    class="brand-logo"
+    src="IMAGES/hookedwithlove_logo.png"
+    alt="Hooked with Love — Handmade logo"
+>
+<span>
+<strong>Hooked with Love</strong>
+<small>Handmade crochet &amp; crafts</small>
+</span>
+</a>
+<nav aria-label="Main navigation">
+<a href="home.html">Home</a>
+<a href="about.html" class="active">About Us</a>
+<a href="shop.html">Shop</a>
+<a href="contact.html">Contact Us &amp; FAQ</a>
+<a href="reviews.html">Reviews</a>
+</nav>
+<div class="header-actions">
+<div class="header-auth-control" id="authHeaderControl"></div>
+<a aria-label="Customer profile" class="icon-btn" href="index.html#profile">♙</a>
+<a aria-label="Shopping cart" class="icon-btn" href="index.html#cart">
+            ♡<span class="count" id="cartCount">0</span>
+</a>
+</div>
+</header>
+</div>
+<main class="wrap">
+<section class="page active" id="about">
+<button class="back" data-onclick="showPage('home')">‹</button>
+<div class="split page-title">
+<div>
+<div class="eyebrow">Our story</div>
+<h2>A Little Love in Every Stitch.</h2>
+<p>Hooked with Love is a handmade crafts business offering crochet products, fuzzy crafts, keychains, and personalized gifts. We believe small, thoughtful creations can make everyday moments feel special.</p>
+<button class="btn btn-primary" data-onclick="showPage('shop')">Explore Our Products</button>
+</div>
+<div class="hero-image" style="min-height:280px">
+<img alt="Handmade creations" class="hero-collage" onerror="this.style.display='none'" src="IMAGES/Aesthetic_Collage.png" style="height:280px"/>
+</div>
+</div>
+<div class="grid">
+<div class="panel"><h3>Our Mission</h3><p>To create thoughtful handmade gifts that celebrate creativity and personal connection.</p></div>
+<div class="panel"><h3>Our Vision</h3><p>To make charming, personalized crafts accessible to more people.</p></div>
+<div class="panel"><h3>Our Values</h3><p>Creativity, personalization, affordability, and care in every detail.</p></div>
+<div class="panel"><h3>What We Create</h3><p>Crochet keychains, flowers, fuzzy crafts, and personalized gifts.</p></div>
+</div>
+<div class="section">
+<h2>Meet Our Team</h2>
+<p>The people behind Hooked with Love.</p>
+<div class="grid team-grid">
+<div class="category team-card"><div class="team-photo"><img alt="Ana Marie Y. Pasatiempo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" src="IMAGES/pasatiempo.jpg"/><div class="team-placeholder">📷<span>pasatiempo.jpg</span></div></div><h3>Ana Marie Y. Pasatiempo</h3><p>Design &amp; Craft</p></div>
+<div class="category team-card"><div class="team-photo"><img alt="Allana Michaela P. Arong" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" src="IMAGES/arong.png"/><div class="team-placeholder">📷<span>arong.png</span></div></div><h3>Allana Michaela P. Arong</h3><p>Product Planning</p></div>
+<div class="category team-card"><div class="team-photo"><img alt="Lindy Mae U. Sorela" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" src="IMAGES/sorela.png"/><div class="team-placeholder">📷<span>sorela.png</span></div></div><h3>Lindy Mae U. Sorela</h3><p>Creative Direction</p></div>
+<div class="category team-card"><div class="team-photo"><img alt="Nicole Faith S. Bontilao" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" src="IMAGES/bontilao.jpg"/><div class="team-placeholder">📷<span>bontilao.jpg</span></div></div><h3>Nicole Faith S. Bontilao</h3><p>Customer Experience</p></div>
+<div class="category team-card"><div class="team-photo"><img alt="April Jane R. Mabatid" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" src="IMAGES/mabatid.png"/><div class="team-placeholder">📷<span>mabatid.png</span></div></div><h3>April Jane R. Mabatid</h3><p>Customer Experience</p></div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap footer-row">
+<a class="brand" href="home.html">
+<img
+    class="brand-logo"
+    src="IMAGES/hookedwithlove_logo.png"
+    alt="Hooked with Love — Handmade logo"
+>
+<span><strong>Hooked with Love</strong><small>Handmade crochet &amp; crafts</small></span>
+</a>
+<span class="subtle">Made with ♡ · Girlies Five</span>
+</div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="py" src="./app.py" config="./pyscript.toml"></script>
+</body>
+</html>
