@@ -1,0 +1,4 @@
+name = "hooked-with-love"
+
+[files]
+"./app.py" = "./app.py"

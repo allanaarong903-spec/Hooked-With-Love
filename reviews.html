@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hooked with Love | Handmade with Heart</title>
+<meta name="description" content="Hooked with Love — handmade crochet creations and customizable gifts.">
+<meta name="theme-color" content="#fff9f2">
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.11.1/core.css">
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="https://pyscript.net/releases/2024.11.1/core.js"></script>
+</head>
+<body>
+<div class="topbar">
+<header class="wrap">
+<a class="brand" href="home.html">
+<img
+    class="brand-logo"
+    src="IMAGES/hookedwithlove_logo.png"
+    alt="Hooked with Love — Handmade logo"
+>
+<span>
+<strong>Hooked with Love</strong>
+<small>Handmade crochet &amp; crafts</small>
+</span>
+</a>
+<nav aria-label="Main navigation">
+<a href="home.html">Home</a>
+<a href="about.html">About Us</a>
+<a href="shop.html">Shop</a>
+<a href="contact.html">Contact Us &amp; FAQ</a>
+<a href="reviews.html" class="active">Reviews</a>
+</nav>
+<div class="header-actions">
+<div class="header-auth-control" id="authHeaderControl"></div>
+<a aria-label="Customer profile" class="icon-btn" href="index.html#profile">♙</a>
+<a aria-label="Shopping cart" class="icon-btn" href="index.html#cart">
+            ♡<span class="count" id="cartCount">0</span>
+</a>
+</div>
+</header>
+</div>
+<main class="wrap">
+<section class="page active" id="reviews">
+<button class="back" data-onclick="showPage('home')">‹</button>
+<div class="page-title"><div class="eyebrow">We'd love to hear from you</div><h2>Your Feedback Means the World to Us.</h2><p>Tell us what you think about our handmade creations.</p></div>
+<div class="review-layout">
+<div class="form-card">
+<h3>Write a Review</h3>
+<form data-onsubmit="submitReview(event)">
+<div class="field">
+<label>Your Rating *</label>
+<div aria-label="Choose a rating" class="stars" id="starPicker" role="group">
+<button data-onclick="setStars(1)" data-star="1" type="button">☆</button>
+<button data-onclick="setStars(2)" data-star="2" type="button">☆</button>
+<button data-onclick="setStars(3)" data-star="3" type="button">☆</button>
+<button data-onclick="setStars(4)" data-star="4" type="button">☆</button>
+<button data-onclick="setStars(5)" data-star="5" type="button">☆</button>
+</div>
+</div>
+<div class="field"><label for="reviewTitle">Review Title *</label><input id="reviewTitle" placeholder="Sum up your experience" required=""/></div>
+<div class="field"><label for="reviewComment">Your Feedback *</label><textarea id="reviewComment" placeholder="Share your thoughts..." required=""></textarea></div>
+<div class="field"><label for="reviewProduct">Product (Optional)</label><select id="reviewProduct"><option value="">Select a product</option></select></div>
+<div class="field"><label for="reviewName">Display Name *</label><input id="reviewName" placeholder="Your name" required=""/></div>
+<button class="btn btn-primary" type="submit">Submit Review</button>
+<button class="btn btn-secondary" data-onclick="setStars(0)" type="reset">Clear Form</button>
+</form>
+</div>
+<div>
+<div class="panel mb">
+<h3>Customer Reviews</h3>
+<div id="ratingSummary"><div class="empty"><div class="empty-icon">♡</div><h3>No reviews yet</h3><p>Be the first to share your feedback.</p></div></div>
+</div>
+<div id="reviewList"></div>
+<p class="subtle">Your reviews help other customers learn about our handmade products.</p>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap footer-row">
+<a class="brand" href="home.html">
+<img
+    class="brand-logo"
+    src="IMAGES/hookedwithlove_logo.png"
+    alt="Hooked with Love — Handmade logo"
+>
+<span><strong>Hooked with Love</strong><small>Handmade crochet &amp; crafts</small></span>
+</a>
+<span class="subtle">Made with ♡ · Girlies Five</span>
+</div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="py" src="./app.py" config="./pyscript.toml"></script>
+</body>
+</html>
