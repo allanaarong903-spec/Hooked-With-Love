@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hooked with Love | Handmade with Heart</title>
+<meta name="description" content="Hooked with Love — handmade crochet creations and customizable gifts.">
+<meta name="theme-color" content="#fff9f2">
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.11.1/core.css">
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="https://pyscript.net/releases/2024.11.1/core.js"></script>
+</head>
+<body>
+<div class="topbar">
+<header class="wrap">
+<a class="brand" href="home.html" class="active">
+<img
+    class="brand-logo"
+    src="IMAGES/hookedwithlove_logo.png"
+    alt="Hooked with Love — Handmade logo"
+>
+<span>
+<strong>Hooked with Love</strong>
+<small>Handmade crochet &amp; crafts</small>
+</span>
+</a>
+<nav aria-label="Main navigation">
+<a href="home.html" class="active">Home</a>
+<a href="about.html">About Us</a>
+<a href="shop.html">Shop</a>
+<a href="contact.html">Contact Us &amp; FAQ</a>
+<a href="reviews.html">Reviews</a>
+</nav>
+<div class="header-actions">
+<div class="header-auth-control" id="authHeaderControl"></div>
+<a aria-label="Customer profile" class="icon-btn" href="index.html#profile">♙</a>
+<a aria-label="Shopping cart" class="icon-btn" href="index.html#cart">
+            ♡<span class="count" id="cartCount">0</span>
+</a>
+</div>
+</header>
+</div>
+<main class="wrap">
+<section class="page active" id="home">
+<div class="hero">
+<div class="hero-copy">
+<div class="eyebrow">Little things, made with love</div>
+<h1>Handmade with Love,<br/><em>Made Just for You.</em></h1>
+<p>Discover handmade crochet crafts, fuzzy accessories, and personalized gifts created to make every moment special.</p>
+<div class="hero-buttons">
+<button class="btn btn-primary" data-onclick="showPage('shop')">Shop Now <span></span></button>
+<button class="btn btn-secondary" data-onclick="showPage('customize')">Customize Your Gift</button>
+</div>
+<div class="subtle">♡ Thoughtful gifts · Handmade details · Made for you</div>
+</div>
+<div class="hero-image">
+<img alt="Aesthetic handmade crochet collage for Hooked with Love" class="hero-collage" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" src="IMAGES/Aesthetic_Collage.png"/>
+<div class="photo-fallback" style="display:none;width:100%;height:100%;min-height:440px;place-items:center;font-size:5rem;">🧶🌷🎀</div>
+<div class="floating-note">A little handmade happiness ♡</div>
+</div>
+</div>
+<div class="section">
+<div class="section-head">
+<div>
+<div class="eyebrow">Explore our collection</div>
+<h2>Shop by Category</h2>
+</div>
+<button class="btn btn-plain" data-onclick="showPage('shop')">View all products →</button>
+</div>
+<div class="grid">
+<div class="category" data-onclick="filterCategory('Crochet Keychains')">
+<img
+    class="category-icon"
+    src="IMAGES/crochet_keychains.jpg"
+    alt="Crochet Keychains"
+><h3>Crochet Keychains</h3>
+</div>
+<div class="category" data-onclick="filterCategory('Crochet Flowers')">
+<img
+    class="category-icon"
+    src="IMAGES/crochet_flower.jpg"
+    alt="Crochet Flowers"
+><h3>Crochet Flowers</h3>
+</div>
+<div class="category" data-onclick="filterCategory('Fuzzy Crafts')">
+<img
+    class="category-icon"
+    src="IMAGES/fuzzy_crafts.jpg"
+    alt="Fuzzy Crafts"
+><h3>Fuzzy Crafts</h3>
+</div>
+<div class="category" data-onclick="filterCategory('Personalized Gifts')">
+<img
+    class="category-icon"
+    src="IMAGES/personalized_gifts.jpg"
+    alt="Personalized Gifts"
+><h3>Personalized Gifts</h3>
+</div>
+</div>
+</div>
+<div class="section">
+<div class="section-head">
+<div>
+<div class="eyebrow">Made by hand, picked by heart</div>
+<h2>Featured Products</h2>
+</div>
+<button class="btn btn-secondary btn-small" data-onclick="showPage('shop')">Explore the Shop</button>
+</div>
+<div class="grid" id="featuredGrid"></div>
+</div>
+<div class="section-tint split">
+<div>
+<div class="eyebrow">Your words matter</div>
+<h2>Made with Love,<br/>Shared with Joy.</h2>
+<p>Have feedback to share? We would love to hear from you.</p>
+<button class="btn btn-primary" data-onclick="showPage('reviews')">Leave Feedback</button>
+<button class="btn btn-secondary" data-onclick="showPage('reviews')">Read Reviews</button>
+</div>
+<div>
+<div class="eyebrow">Our little story</div>
+<h2>Small Crafts, Big Love.</h2>
+<p>We create thoughtful crochet crafts and personalized gifts for everyday joy and special occasions.</p>
+<button class="btn btn-secondary" data-onclick="showPage('about')">Learn More</button>
+</div>
+</div>
+<div class="section">
+<div class="section-head">
+<div>
+<div class="eyebrow">A little peek behind the stitches</div>
+<h2>Featured / Promotional Video</h2>
+<p>When Art and Creation collides.</p>
+</div>
+</div>
+<div class="panel">
+<video aria-label="Hooked with Love promotional video" class="video-frame" controls="" id="promoVideo" playsinline="" preload="metadata"></video>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap footer-row">
+<a class="brand" href="home.html">
+<img
+    class="brand-logo"
+    src="IMAGES/hookedwithlove_logo.png"
+    alt="Hooked with Love — Handmade logo"
+>
+<span><strong>Hooked with Love</strong><small>Handmade crochet &amp; crafts</small></span>
+</a>
+<span class="subtle">Made with ♡ · Girlies Five</span>
+</div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="py" src="./app.py" config="./pyscript.toml"></script>
+</body>
+</html>
