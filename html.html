@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hooked with Love | Handmade with Heart</title>
+<meta content="Hooked with Love — handmade crochet creations and customizable gifts." name="description"/>
+<meta content="#fff9f2" name="theme-color"/>
+<link href="https://pyscript.net/releases/2024.11.1/core.css" rel="stylesheet"/>
+<script src="https://pyscript.net/releases/2024.11.1/core.js" type="module"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="topbar">
+<header class="wrap">
+<a class="brand" href="home.html">
+<span class="brandmark">🧶</span>
+<span>
+<strong>Hooked with Love</strong>
+<small>Handmade crochet &amp; crafts</small>
+</span>
+</a>
+<nav aria-label="Main navigation">
+<a href="home.html" class="active">Home</a>
+<a href="about.html">About Us</a>
+<a href="shop.html">Shop</a>
+<a href="contact.html">Contact Us &amp; FAQ</a>
+<a href="reviews.html">Reviews</a>
+</nav>
+<div class="header-actions">
+<div class="header-auth-control" id="authHeaderControl"></div>
+<button aria-label="Customer profile" class="icon-btn" data-onclick="showPage('profile')" type="button">♙</button>
+<button aria-label="Shopping cart" class="icon-btn" data-onclick="showPage('cart')" type="button">
+            ♡<span class="count" id="cartCount">0</span>
+</button>
+</div>
+</header>
+</div>
+<main class="wrap" style="flex:1;width:min(1180px,92%);">
+<section class="page active" id="home">
+<div class="hero">
+<div class="hero-copy">
+<div class="eyebrow">Little things, made with love</div>
+<h1>Handmade with Love,<br/><em>Made Just for You.</em></h1>
+<p>Discover handmade crochet crafts, fuzzy accessories, and personalized gifts created to make every moment special.</p>
+<div class="hero-buttons">
+<button class="btn btn-primary" data-onclick="showPage('shop')">Shop Now <span></span></button>
+<button class="btn btn-secondary" data-onclick="showPage('customize')">Customize Your Gift</button>
+</div>
+<div class="subtle">♡ Thoughtful gifts · Handmade details · Made for you</div>
+</div>
+<div class="hero-image">
+<img alt="Aesthetic handmade crochet collage for Hooked with Love" class="hero-collage" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" src="IMAGES/Aesthetic_Collage.png"/>
+<div class="photo-fallback" style="display:none;width:100%;height:100%;min-height:440px;place-items:center;font-size:5rem;">🧶🌷🎀</div>
+<div class="floating-note">A little handmade happiness ♡</div>
+</div>
+</div>
+<div class="section">
+<div class="section-head">
+<div>
+<div class="eyebrow">Explore our collection</div>
+<h2>Shop by Category</h2>
+</div>
+<button class="btn btn-plain" data-onclick="showPage('shop')">View all products →</button>
+</div>
+<div class="grid">
+<div class="category" data-onclick="filterCategory('Crochet Keychains')">
+<div class="category-icon">🧸</div><h3>Crochet Keychains</h3>
+</div>
+<div class="category" data-onclick="filterCategory('Crochet Flowers')">
+<div class="category-icon">🌼</div><h3>Crochet Flowers</h3>
+</div>
+<div class="category" data-onclick="filterCategory('Fuzzy Crafts')">
+<div class="category-icon">🧶</div><h3>Fuzzy Crafts</h3>
+</div>
+<div class="category" data-onclick="filterCategory('Personalized Gifts')">
+<div class="category-icon">🎁</div><h3>Personalized Gifts</h3>
+</div>
+</div>
+</div>
+<div class="section">
+<div class="section-head">
+<div>
+<div class="eyebrow">Made by hand, picked by heart</div>
+<h2>Featured Products</h2>
+</div>
+<button class="btn btn-secondary btn-small" data-onclick="showPage('shop')">Explore the Shop</button>
+</div>
+<div class="grid" id="featuredGrid"></div>
+</div>
+<div class="section-tint split">
+<div>
+<div class="eyebrow">Your words matter</div>
+<h2>Made with Love,<br/>Shared with Joy.</h2>
+<p>Have feedback to share? We would love to hear from you.</p>
+<button class="btn btn-primary" data-onclick="showPage('reviews')">Leave Feedback</button>
+<button class="btn btn-secondary" data-onclick="showPage('reviews')">Read Reviews</button>
+</div>
+<div>
+<div class="eyebrow">Our little story</div>
+<h2>Small Crafts, Big Love.</h2>
+<p>We create thoughtful crochet crafts and personalized gifts for everyday joy and special occasions.</p>
+<button class="btn btn-secondary" data-onclick="showPage('about')">Learn More</button>
+</div>
+</div>
+<div class="section">
+<div class="section-head">
+<div>
+<div class="eyebrow">A little peek behind the stitches</div>
+<h2>Featured / Promotional Video</h2>
+<p>Showcase your latest creations, crafting process, or gift ideas.</p>
+</div>
+</div>
+<div class="panel">
+<video aria-label="Hooked with Love promotional video" class="video-frame" controls="" id="promoVideo" playsinline="" preload="metadata"></video>
+</div>
+</div>
+</section>
+<section class="page" id="login">
+<button aria-label="Back" class="back" data-onclick="showPage('home')">‹</button>
+<div class="page-title center">
+<div class="eyebrow">Welcome back</div><h2>Log In</h2>
+<p>Log in to shop, customize gifts, and manage your orders.</p>
+</div>
+<div class="form-card auth-card auth-screen">
+<form data-onsubmit="return demoLogin(event)">
+<div class="field">
+<label for="loginEmail">Email Address</label>
+<input id="loginEmail" placeholder="you@example.com" required="" type="email"/>
+</div>
+<div class="field">
+<label for="loginPassword">Password</label>
+<div class="password-wrap">
+<input id="loginPassword" placeholder="Enter your password" required="" type="password"/>
+<button aria-controls="loginPassword" class="password-toggle" data-onclick="togglePassword('loginPassword',this)" type="button">Show</button>
+</div>
+</div>
+<button class="btn btn-primary wide" type="submit">Log In</button>
+</form>
+<div class="divider"></div>
+<p class="center">New here? <button class="text-link" data-onclick="showPage('signup')">Create an Account</button></p>
+</div>
+</section>
+<section class="page" id="signup">
+<button aria-label="Back" class="back" data-onclick="showPage('login')">‹</button>
+<div class="page-title center">
+<div class="eyebrow">Join our little community</div><h2>Create an Account</h2>
+<p>Create an account to save your profile and place orders. You can explore the shop anytime.</p>
+</div>
+<div class="form-card auth-card auth-screen">
+<form data-onsubmit="return demoSignup(event)">
+<div class="field"><label for="registerName">Full Name</label><input id="registerName" placeholder="Your full name" required=""/></div>
+<div class="field"><label for="registerEmail">Email Address</label><input id="registerEmail" placeholder="you@example.com" required="" type="email"/></div>
+<div class="field">
+<label for="registerPassword">Password</label>
+<div class="password-wrap">
+<input id="registerPassword" placeholder="Create a password" required="" type="password"/>
+<button class="password-toggle" data-onclick="togglePassword('registerPassword',this)" type="button">Show</button>
+</div>
+</div>
+<div class="field">
+<label for="registerConfirm">Confirm Password</label>
+<div class="password-wrap">
+<input id="registerConfirm" placeholder="Enter password again" required="" type="password"/>
+<button class="password-toggle" data-onclick="togglePassword('registerConfirm',this)" type="button">Show</button>
+</div>
+</div>
+<label class="subtle"><input id="termsAgree" required="" type="checkbox"/> I agree to the Terms and Conditions.</label>
+<button class="btn btn-primary wide mt" type="submit">Sign Up</button>
+</form>
+<div class="divider"></div>
+<p class="center">Already have an account? <button class="text-link" data-onclick="showPage('login')">Log In</button></p>
+</div>
+</section>
+<section class="page" id="about">
+<button class="back" data-onclick="showPage('home')">‹</button>
+<div class="split page-title">
+<div>
+<div class="eyebrow">Our story</div>
+<h2>A Little Love in Every Stitch.</h2>
+<p>Hooked with Love is a handmade crafts business offering crochet products, fuzzy crafts, keychains, and personalized gifts. We believe small, thoughtful creations can make everyday moments feel special.</p>
+<button class="btn btn-primary" data-onclick="showPage('shop')">Explore Our Products</button>
+</div>
+<div class="hero-image" style="min-height:280px">
+<img alt="Handmade creations" class="hero-collage" onerror="this.style.display='none'" src="IMAGES/Aesthetic_Collage.png" style="height:280px"/>
+</div>
+</div>
+<div class="grid">
+<div class="panel"><h3>Our Mission</h3><p>To create thoughtful handmade gifts that celebrate creativity and personal connection.</p></div>
+<div class="panel"><h3>Our Vision</h3><p>To make charming, personalized crafts accessible to more people.</p></div>
+<div class="panel"><h3>Our Values</h3><p>Creativity, personalization, affordability, and care in every detail.</p></div>
+<div class="panel"><h3>What We Create</h3><p>Crochet keychains, flowers, fuzzy crafts, and personalized gifts.</p></div>
+</div>
+<div class="section">
+<h2>Meet Our Team</h2>
+<p>The people behind Hooked with Love.</p>
+<div class="grid team-grid">
+<div class="category team-card"><div class="team-photo"><img alt="Ana Marie Y. Pasatiempo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" src="IMAGES/pasatiempo.jpg"/><div class="team-placeholder">📷<span>pasatiempo.jpg</span></div></div><h3>Ana Marie Y. Pasatiempo</h3><p>Design &amp; Craft</p></div>
+<div class="category team-card"><div class="team-photo"><img alt="Allana Michaela P. Arong" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" src="IMAGES/arong.png"/><div class="team-placeholder">📷<span>arong.png</span></div></div><h3>Allana Michaela P. Arong</h3><p>Product Planning</p></div>
+<div class="category team-card"><div class="team-photo"><img alt="Lindy Mae U. Sorela" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" src="IMAGES/sorela.png"/><div class="team-placeholder">📷<span>sorela.png</span></div></div><h3>Lindy Mae U. Sorela</h3><p>Creative Direction</p></div>
+<div class="category team-card"><div class="team-photo"><img alt="Nicole Faith S. Bontilao" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" src="IMAGES/bontilao.jpg"/><div class="team-placeholder">📷<span>bontilao.jpg</span></div></div><h3>Nicole Faith S. Bontilao</h3><p>Customer Experience</p></div>
+<div class="category team-card"><div class="team-photo"><img alt="April Jane R. Mabatid" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" src="IMAGES/mabatid.png"/><div class="team-placeholder">📷<span>mabatid.png</span></div></div><h3>April Jane R. Mabatid</h3><p>Customer Experience</p></div>
+</div>
+</div>
+</section>
+<section class="page" id="shop">
+<button class="back" data-onclick="showPage('home')">‹</button>
+<div class="page-title">
+<div class="eyebrow">Find your favorite</div>
+<h2>Find Something Handmade with Love.</h2>
+<p>Browse our collection of cute crochet crafts and thoughtful gifts.</p>
+</div>
+<div class="toolbar">
+<input class="search" data-oninput="renderProducts()" id="searchInput" placeholder="Search for a product…"/>
+<select class="search" data-onchange="renderProducts()" id="sortSelect" style="max-width:220px;min-width:180px">
+<option value="featured">Sort: Featured</option>
+<option value="low">Price: Low to High</option>
+<option value="high">Price: High to Low</option>
+<option value="name">Name: A to Z</option>
+</select>
+</div>
+<div class="filters" id="filters"></div>
+<div class="grid" id="shopGrid"></div>
+<div class="empty hidden" id="noResults">
+<div class="empty-icon">🔎</div><h3>No products found</h3>
+<p>Try another search or choose a different category.</p>
+<button class="btn btn-secondary" data-onclick="resetShop()">Clear Search</button>
+</div>
+</section>
+<section class="page" id="product">
+<button class="back" data-onclick="showPage('shop')">‹</button>
+<div class="product-detail">
+<div class="product-gallery">
+<div class="thumbs">
+<div class="thumb">🧸</div><div class="thumb">🧶</div><div class="thumb">🎀</div>
+</div>
+<div class="main-product-art" id="detailArt">🧸</div>
+</div>
+<div>
+<div class="eyebrow">Handmade favorite</div>
+<h2 id="detailName">Handmade Product</h2>
+<div class="price" id="detailPrice" style="font-size:1.5rem">₱0</div>
+<p id="detailDesc">A handmade accessory, perfect for everyday use or a thoughtful gift.</p>
+<div class="field">
+<label>Choose a Color</label>
+<div class="swatches">
+<button aria-label="Sage green" class="swatch selected" data-onclick="selectSwatch(this)" style="background:#a8b99a"></button>
+<button aria-label="Pink" class="swatch" data-onclick="selectSwatch(this)" style="background:#f2bfc9"></button>
+<button aria-label="Lavender" class="swatch" data-onclick="selectSwatch(this)" style="background:#c8b2d4"></button>
+<button aria-label="Cream" class="swatch" data-onclick="selectSwatch(this)" style="background:#ead9b8"></button>
+</div>
+</div>
+<div class="field">
+<label>Quantity</label>
+<div class="qty">
+<button data-onclick="changeDetailQty(-1)">−</button>
+<span id="detailQty">1</span>
+<button data-onclick="changeDetailQty(1)">+</button>
+</div>
+</div>
+<div class="hero-buttons">
+<button class="btn btn-primary" data-onclick="addToCart()">Add to Cart</button>
+<button class="btn btn-secondary" data-onclick="showPage('customize')">Customize This Product</button>
+</div>
+<div class="divider"></div>
+<h3>Product Details</h3>
+<p>Handmade-style design · Gentle care recommended · Preparation time confirmed with the seller.</p>
+<span class="pill">Sample product information</span>
+</div>
+</div>
+<div class="section"><h2>You May Also Like</h2><div class="grid" id="relatedGrid"></div></div>
+</section>
+<section class="page" id="customize">
+<button aria-label="Back to Home" class="back" data-onclick="showPage('home')" title="Back to Home">‹</button>
+<div class="page-title">
+<div class="eyebrow">Made personal</div><h2>Make It Your Own.</h2>
+<p>Choose the details that make your handmade gift feel special.</p>
+</div>
+<div class="split">
+<div class="form-card">
+<div class="field"><label for="customColor">Choose a Color</label><select id="customColor"><option>Sage Green</option><option>Blush Pink</option><option>Lavender</option><option>Cream</option></select></div>
+<div class="field"><label for="customDesign">Choose a Design</label><select id="customDesign"><option>Classic Bear</option><option>Flower Charm</option><option>Mini Daisy</option></select></div>
+<div class="field"><label for="customName">Personalized Name or Text</label><input id="customName" maxlength="20" placeholder="Enter a name (optional)"/></div>
+<div class="field"><label for="giftMessage">Gift Message (Optional)</label><textarea id="giftMessage" placeholder="Write a short gift message..."></textarea></div>
+<div class="field"><label for="customNotes">Customization Notes</label><textarea id="customNotes" placeholder="Any special requests?"></textarea></div>
+<div class="field"><label for="customQty">Quantity</label><input data-oninput="updateCustomTotal()" id="customQty" max="20" min="1" type="number" value="1"/></div>
+</div>
+<div class="summary">
+<div class="main-product-art" style="min-height:220px;font-size:6rem">
+<img alt="Handmade gift inspiration" onerror="this.style.display='none'" src="IMAGES/Aesthetic_Collage.png" style="min-height:220px"/>
+</div>
+<h3>Customized Crochet Gift</h3>
+<p>Sample base price</p>
+<div class="summary-line"><span>Base price</span><strong>₱149</strong></div>
+<div class="summary-line"><span>Example customization fee</span><strong>₱20</strong></div>
+<div class="summary-line"><span>Quantity</span><strong id="customQtyLabel">1</strong></div>
+<div class="summary-line total"><span>Estimated Total</span><strong id="customTotal">₱169</strong></div>
+<p class="subtle">Customization fees are examples only. Final details may need confirmation.</p>
+<button class="btn btn-primary wide" data-onclick="addCustomToCart()">Add Customized Item to Cart</button>
+<button class="btn btn-secondary wide mt" data-onclick="showPage('home')">Cancel</button>
+</div>
+</div>
+</section>
+<section class="page" id="cart">
+<button class="back" data-onclick="showPage('shop')">‹</button>
+<div class="page-title"><div class="eyebrow">Almost yours</div><h2>Your Handmade Finds.</h2><p>Review your items before continuing to checkout.</p></div>
+<div id="cartContent"></div>
+</section>
+<section class="page" id="checkout">
+<button class="back" data-onclick="showPage('cart')">‹</button>
+<div class="page-title"><h2>Checkout</h2><p>Enter your details and review your order.</p></div>
+<div class="stepper"><span class="step">1 · Cart</span><span class="step active">2 · Checkout</span><span class="step">3 · Confirmation</span></div>
+<form data-onsubmit="submitOrder(event)" id="checkoutForm">
+<div class="cart-layout">
+<div class="form-card">
+<h3>Customer Information</h3>
+<div class="field"><label for="fullName">Full Name *</label><input id="fullName" placeholder="Your full name" required=""/></div>
+<div class="split">
+<div class="field"><label for="email">Email Address *</label><input id="email" placeholder="you@example.com" required="" type="email"/></div>
+<div class="field"><label for="phone">Phone Number *</label><input id="phone" placeholder="09XX XXX XXXX" required="" type="tel"/></div>
+</div>
+<h3>Delivery Address</h3>
+<div class="split">
+<div class="field"><label for="province">Province *</label><input id="province" placeholder="Province" required=""/></div>
+<div class="field"><label for="city">City / Municipality *</label><input id="city" placeholder="City or municipality" required=""/></div>
+</div>
+<div class="split">
+<div class="field"><label for="barangay">Barangay *</label><input id="barangay" placeholder="Barangay" required=""/></div>
+<div class="field"><label for="street">Street Address *</label><input id="street" placeholder="Street, building, house no." required=""/></div>
+</div>
+<div class="field"><label for="orderNotes">Order Notes (Optional)</label><textarea id="orderNotes" placeholder="Delivery instructions or special requests"></textarea></div>
+<label class="subtle"><input required="" type="checkbox"/> I confirm that my order details are correct.</label>
+</div>
+<div class="summary">
+<h3>Order Summary</h3>
+<div id="checkoutItems"></div>
+<div class="summary-line"><span>Subtotal</span><strong id="checkoutSubtotal">₱0</strong></div>
+<div class="summary-line"><span>Estimated Delivery Fee</span><strong>₱50</strong></div>
+<div class="summary-line total"><span>Estimated Total</span><strong id="checkoutTotal">₱50</strong></div>
+<div class="field mt"><label for="payment">Payment Method</label><select id="payment"><option>Cash on Delivery</option><option>Bank Transfer</option></select></div>
+<div class="notice">Please contact us to confirm payment and delivery arrangements.</div>
+<button class="btn btn-primary wide mt" type="submit">Place Order</button>
+<button class="btn btn-secondary wide mt" data-onclick="showPage('cart')" type="button">Cancel Order</button>
+</div>
+</div>
+</form>
+</section>
+<section class="page" id="confirmation">
+<div class="form-card success">
+<div class="success-icon">✓</div>
+<div class="eyebrow">Order received</div>
+<h2>Thank You for Choosing Handmade!</h2>
+<p>Your order has been submitted successfully.</p>
+<div class="panel" style="text-align:left;margin:24px 0">
+<div class="summary-line"><span>Order Reference</span><strong id="orderRef">HL-0001</strong></div>
+<div id="confirmationItems"></div>
+<div class="summary-line total"><span>Estimated Total</span><strong id="confirmationTotal">₱0</strong></div>
+<p class="subtle" id="confirmationCustomer"></p>
+</div>
+<div class="notice">Payment and delivery updates will be confirmed by our team.</div>
+<div class="hero-buttons" style="justify-content:center">
+<button class="btn btn-primary" data-onclick="showPage('shop')">Continue Shopping</button>
+<button class="btn btn-secondary" data-onclick="showPage('home')">Back to Home</button>
+<button class="btn btn-plain" data-onclick="showPage('tracking')">Track Order</button>
+</div>
+</div>
+</section>
+<section class="page" id="tracking">
+<button class="back" data-onclick="showPage('home')">‹</button>
+<div class="page-title"><div class="eyebrow">Order updates</div><h2>Track Your Handmade Order.</h2><p>Enter your order reference to view its status.</p></div>
+<div class="form-card mb">
+<form data-onsubmit="trackOrder(event)">
+<div class="toolbar"><input class="search" id="trackRef" placeholder="Example: HL-0001" required=""/><button class="btn btn-primary" type="submit">Track Order</button></div>
+</form>
+</div>
+<div class="split" id="trackingResult">
+<div class="panel">
+<h3>Order Timeline</h3>
+<div class="timeline">
+<div class="timeline-item"><strong>Order Received</strong><p>Order received</p></div>
+<div class="timeline-item"><strong>Preparing</strong><p>Sample status</p></div>
+<div class="timeline-item"><strong>Ready for Delivery</strong><p>Sample status</p></div>
+<div class="timeline-item"><strong>Completed</strong><p>Sample status</p></div>
+</div>
+</div>
+<div class="panel">
+<h3>Order Summary</h3>
+<p>Order reference: <strong id="trackDisplay">HL-0001</strong></p>
+<p>Contact us if you need help with your order status.</p>
+<button class="btn btn-secondary" data-onclick="showPage('profile')">View Order History</button>
+</div>
+</div>
+</section>
+<section class="page" id="reviews">
+<button class="back" data-onclick="showPage('home')">‹</button>
+<div class="page-title"><div class="eyebrow">We'd love to hear from you</div><h2>Your Feedback Means the World to Us.</h2><p>Tell us what you think about our handmade creations.</p></div>
+<div class="review-layout">
+<div class="form-card">
+<h3>Write a Review</h3>
+<form data-onsubmit="submitReview(event)">
+<div class="field">
+<label>Your Rating *</label>
+<div aria-label="Choose a rating" class="stars" id="starPicker" role="group">
+<button data-onclick="setStars(1)" data-star="1" type="button">☆</button>
+<button data-onclick="setStars(2)" data-star="2" type="button">☆</button>
+<button data-onclick="setStars(3)" data-star="3" type="button">☆</button>
+<button data-onclick="setStars(4)" data-star="4" type="button">☆</button>
+<button data-onclick="setStars(5)" data-star="5" type="button">☆</button>
+</div>
+</div>
+<div class="field"><label for="reviewTitle">Review Title *</label><input id="reviewTitle" placeholder="Sum up your experience" required=""/></div>
+<div class="field"><label for="reviewComment">Your Feedback *</label><textarea id="reviewComment" placeholder="Share your thoughts..." required=""></textarea></div>
+<div class="field"><label for="reviewProduct">Product (Optional)</label><select id="reviewProduct"><option value="">Select a product</option></select></div>
+<div class="field"><label for="reviewName">Display Name *</label><input id="reviewName" placeholder="Your name" required=""/></div>
+<button class="btn btn-primary" type="submit">Submit Review</button>
+<button class="btn btn-secondary" data-onclick="setStars(0)" type="reset">Clear Form</button>
+</form>
+</div>
+<div>
+<div class="panel mb">
+<h3>Customer Reviews</h3>
+<div id="ratingSummary"><div class="empty"><div class="empty-icon">♡</div><h3>No reviews yet</h3><p>Be the first to share your feedback.</p></div></div>
+</div>
+<div id="reviewList"></div>
+<p class="subtle">Your reviews help other customers learn about our handmade products.</p>
+</div>
+</div>
+</section>
+<section class="page" id="contact">
+<button aria-label="Back" class="back" data-onclick="showPage('home')">‹</button>
+<div class="page-title"><div class="eyebrow">We would love to hear from you</div><h2>Contact Us &amp; FAQs</h2><p>Questions about custom gifts, pricing, or our handmade collection? Reach out through our social pages.</p></div>
+<div class="split">
+<div class="panel">
+<h3>Find Hooked with Love</h3>
+<p>Follow us for new creations, updates, and custom orders.</p>
+<div class="toolbar">
+<a aria-label="Facebook page" class="social-link" href="https://www.facebook.com/" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M13.4 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.6v2H6.8v3.2h2.9V21z"></path></svg><span>Facebook Page ↗</span></a>
+<a aria-label="Instagram page" class="social-link" href="https://www.instagram.com/" rel="noopener" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" fill="currentColor" r="1" stroke="none"></circle></svg><span>Instagram ↗</span></a>
+<a aria-label="TikTok page" class="social-link" href="https://www.tiktok.com/" rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M19.6 7.2a6.7 6.7 0 0 1-4.1-1.4v8.1a6.1 6.1 0 1 1-5.3-6.1v3.4a2.8 2.8 0 1 0 1.9 2.7V2.5h3.4c.2 2.2 1.8 4 4.1 4.3z"></path></svg><span>TikTok ↗</span></a>
+</div>
+<div class="divider"></div>
+<p><strong>Business name:</strong> Hooked with Love</p>
+<p><strong>Message us about:</strong> product availability, customization requests, estimated prices, and order questions.</p>
+</div>
+<div class="panel">
+<h3>Frequently Asked Questions</h3>
+<div aria-expanded="false" class="faq-item"><button aria-expanded="false" class="faq-question" data-faq="1" type="button"><span>1. What products do you offer?</span><span class="faq-mark">+</span></button><div class="faq-answer"><p>We offer crochet keychains, crochet flowers, fuzzy crafts, and personalized handmade gifts.</p></div></div>
+<div aria-expanded="false" class="faq-item"><button aria-expanded="false" class="faq-question" data-faq="2" type="button"><span>2. Can I customize a product?</span><span class="faq-mark">+</span></button><div class="faq-answer"><p>Yes. You can request a color, design, or name customization. Final details and availability should be confirmed with the team.</p></div></div>
+<div aria-expanded="false" class="faq-item"><button aria-expanded="false" class="faq-question" data-faq="3" type="button"><span>3. How much do products cost?</span><span class="faq-mark">+</span></button><div class="faq-answer"><p>Prices are listed with each product. The final price may vary based on materials, size, and customization.</p></div></div>
+<div aria-expanded="false" class="faq-item"><button aria-expanded="false" class="faq-question" data-faq="4" type="button"><span>4. How long does an order take?</span><span class="faq-mark">+</span></button><div class="faq-answer"><p>Preparation time depends on the design and number of items. Please message us to confirm the estimated completion date.</p></div></div>
+<div aria-expanded="false" class="faq-item"><button aria-expanded="false" class="faq-question" data-faq="5" type="button"><span>5. How can I ask about an order?</span><span class="faq-mark">+</span></button><div class="faq-answer"><p>Contact us through our social media page and include your name and order reference if you have one.</p></div></div>
+<div aria-expanded="false" class="faq-item"><button aria-expanded="false" class="faq-question" data-faq="6" type="button"><span>6. Are online payment and delivery available here?</span><span class="faq-mark">+</span></button><div class="faq-answer"><p>Please contact us through our social pages to confirm current payment and delivery arrangements.</p></div></div>
+</div>
+</div>
+</section>
+<section class="page" id="profile">
+<button class="back" data-onclick="showPage('home')">‹</button>
+<div class="page-title"><div class="eyebrow">Your account</div><h2>My Profile</h2><p>Manage your profile and view your order history.</p></div>
+<div class="profile-layout">
+<aside class="panel side-menu">
+<img alt="Profile picture" class="profile-avatar" id="profileAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='60' fill='%23f2e8f2'/%3E%3Ctext x='60' y='77' font-size='54' text-anchor='middle'%3E%E2%99%99%3C/text%3E%3C/svg%3E"/>
+<label class="btn btn-secondary btn-small wide" for="profilePhotoInput">Change Picture</label>
+<input accept="image/*" class="hidden" data-onchange="changeProfilePhoto(event)" id="profilePhotoInput" type="file"/>
+<h3 class="center" id="profileDisplayName">Your Name</h3>
+<p class="center subtle" id="profileDisplayEmail">your@email.com</p>
+<div class="divider"></div>
+<button class="active" data-onclick="profileTab('profileInfo',this)">Profile Information</button>
+<button data-onclick="profileTab('profileOrders',this)">Order History</button>
+<button data-onclick="profileTab('profileSettings',this)">Account Settings</button>
+<button data-onclick="demoLogout()">Sign Out</button>
+</aside>
+<div>
+<div class="panel profile-tab" id="profileInfo">
+<h3>Profile Information</h3>
+<div class="field"><label>Profile Picture</label><p class="subtle">Use Change Picture on the left to choose a photo from your device.</p></div>
+<div class="field"><label>Full Name</label><input autocomplete="name" id="profileName" required="" value=""/></div>
+<div class="field"><label>Email Address</label><input autocomplete="email" id="profileEmail" required="" type="email" value=""/></div>
+<div class="field"><label>Phone Number</label><input autocomplete="tel" id="profilePhone" placeholder="Add phone number" type="tel" value=""/></div>
+<button class="btn btn-primary" data-act="saveProfile">Save Changes</button>
+</div>
+<div class="panel profile-tab hidden" id="profileOrders">
+<h3>Order History</h3>
+<div id="profileOrderTable"><p>No orders yet. Place an order to see it here.</p></div>
+</div>
+<div class="panel profile-tab hidden" id="profileSettings">
+<h3>Account Settings</h3>
+<label><input type="checkbox"/> Receive product updates</label>
+<div class="divider"></div>
+<button class="btn btn-secondary" data-onclick="toast('Account settings are simulated.')">Save Preferences</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap footer-row">
+<a class="brand" href="home.html">
+<span class="brandmark">🧶</span>
+<span><strong>Hooked with Love</strong><small>Handmade crochet &amp; crafts</small></span>
+</a>
+<span class="subtle">Made with ♡ · Girlies Five</span>
+</div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+<script config="./pyscript.toml" src="./app.py" type="py"></script>
+</body>
+</html>
